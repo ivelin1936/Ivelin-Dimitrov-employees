@@ -3,7 +3,7 @@ The pair of employees which are worked together on joint projects longest time
 
 # Assignment Guide
 
-This is a small object-oriented project - console application. Reading data from text file 'employees.txt', which is placed in resource package ```TeamLongestPeriod/src/resources/```. Calculates longest overlap and printing the team (couple of employees), which has longest total overlap under joined projects.
+This is a small object-oriented project - console application. Reading data from text file ```employees.txt```, which is placed in resource package ```TeamLongestPeriod/src/resources/```. Calculates longest overlap and printing the team (couple of employees), which has longest total overlap under joined projects.
 
 ## Getting Started
 ### Application is supposed to be run using an IDE
