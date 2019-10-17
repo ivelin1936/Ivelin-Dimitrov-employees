@@ -1,9 +1,27 @@
 # Ivelin-Dimitrov-employees
-The pair of employees which are worked together on joint projects longest time
+Couple of employees who have worked together on common projects for the longest time
+
+It's given a text file in format ```EmpID, ProjectID, DateFrom, DateTo```
+Example data: 
+   ```
+      143, 12, 2013-11-01, 2014-01-05
+      218, 10, 2012-05-16, NULL
+      143, 10, 2009-01-01, 2011-04-27
+      ...
+   ```
+   
+* 1) To write an application that finds the couple of employees who have worked together on common projects for the longest time.
+* 2) DateTo can accept value „NULL“ (this is equal to „today“).
+* 3) The data can be passed to the program from a text file
+* 4) The program have to be started without the need to do any code changes, after “checkout” on the code and import in IDE, the program        have to run and show the result in to the console
+* 5) Comply with the “code convention”, depending on the programming language:
+      a. Java - (http://www.oracle.com/technetwork/java/codeconvtoc-136057.html )
+* 6) The solution to the problem to be put in github
+      a. Repository Name to be „FirstName-LastName-employees (example: ivan-ivanov-employess)
 
 # Assignment Guide
 
-This is a small object-oriented project - console application. Reading data from text file ```employees.txt```, which is placed in resource package ```TeamLongestPeriod/src/resources/```. Calculates longest overlap and printing the team (couple of employees), which has longest total overlap under joined projects.
+This is a small object-oriented project - console application. Reading data from text file ```employees.txt```, which is placed in resource package ```TeamLongestPeriod/src/resources/```. Calculates longest overlap and printing the team (couple of employees), which has longest total overlap on common projects for the longest time.
 
 ## Getting Started
 ### Application is supposed to be run using an IDE
@@ -27,100 +45,6 @@ Every stuff is an instance of the item's class. Item's class is just a date clas
 To finish the purchase we need to have and discount card, for the demo, discount card accept from constructor a turnover value for the previous month.
 In the end with pay desk we can finalize our purchase and get in back an invoice of the purchase when invoke pay() method. 
 PayDesk has a private constructor (we can't instance it), because it work with a static method pay(), can be called without creating an object of class because it's associated to the class in which is reside not to the objects of that class.
-
-### Demo
-#### Shopping items with Gold Discount Card with Mock data: turnover $1500, purchase value $1300;
-* Create an instace of golden card with turnover = 1300$
-```
-DiscountCard goldenCard = new GoldCard(1300);
-```
-   Input turnover will be validate, and if is incorrect will throw InvalidTurnoverException
-   ```
-   private void setTurnover(double turnover) {
-       if (turnover < 0) {
-           throw new InvalidTurnoverException(INCORRECT_TURNOVER_VALUE_EX_MSG);
-       }
-       this.turnover = turnover;
-   }
-   ```
-* To can start shopping will need to create an instace of cart too
-```
-Cart shopCart = new StoreCart();
-```
-* Will buy three items for 350$, 700$ and 250$
-```
-Item video = new ItemImpl("Video", 350D);
-Item fridge = new ItemImpl("Fridge", 700D);
-Item picture = new ItemImpl("Picture", 250D);
-```
-Items validate the passed name and price, before to assigne them to his properties.
-* Need to adding every choosen stuff to shopping cart
-```
-shopCart.addItem(video);
-shopCart.addItem(fridge);
-shopCart.addItem(picture);
-```
-* Now we are done with the shopping and need goint to the paydesk to finalize our purchase
-```
-String invoiceResult = PayDesk.pay(shopCart, goldenCard);
-```
-The card will calculate discount rate on base on the turnover from the previous month.
-```
-INITIAL_DISCOUNT = 2D; ONE_HUNDRED_DOLLARS = 100D; DISCOUNT_RATE_INCREMENT = 1D; MAX_DISCOUNT = 10D;
-
-@Override
-public double getDiscountRate() {
-  double discount = INITIAL_DISCOUNT; 
-  discount += (super.getPreviousMonthTurnover() / ONE_HUNDRED_DOLLARS) * DISCOUNT_RATE_INCREMENT;
-  
-  return discount > MAX_DISCOUNT ? MAX_DISCOUNT : discount;
-}
-```
-The cart will calculate purchase total value and will return the totalAmount
-```
-@Override
-public double getPurchaseValue() {
-    return this.items.stream()
-            .mapToDouble(Item::getPrice)
-            .sum();
-}
-```
-On base on the cardDiscountRate and totalPurchaseValue, will be calculate purchaseDiscount and totalAmount
-```
-private static double calculatePurchaseDiscount(double purchaseValue, double cardDiscountRate) {
-    return purchaseValue * cardDiscountRate / ONE_HUNDRED;
-}
-
-private static double calculateTotalAmount(double purchaseValue, double discount) {
-    return purchaseValue - discount;
-}
-```
-Paydesk will build invoice and will return it. 
-Print invoice on the console and see result.
-```
-writer.writeLine(invoiceResult);
-```
-RESULT:
-```
-Purchase value: $1300,00
-Discount rate: 10,0%
-Discount: $130,00
-Total: $1170,00
-```
-
-## Structure
-#### The structure of the software is concentrate over the shopping with discount cards
-
-### [BaseCards](https://github.com/ivelin1936/Assignment-Backend/blob/master/src/main/java/entities/cards/BaseCard.java)
-The cards are initialized with:
-   * `- turnover: double`
-   * `- setTurnover(double turnover)`
-   * `+ double getPreviousMonthTurnover()`
-   
-   
-   
-   
-   
 
 ## Technologies
 
